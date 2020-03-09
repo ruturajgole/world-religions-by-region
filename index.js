@@ -1,11 +1,11 @@
-function pageLoaded() {
-var date = new Date();
-var hours = date.getHours();
-var minutes = date.getMinutes();
-var seconds = date.getSeconds();
+import { select, json, geoPath, geoNaturalEarth1 } from 'd3';
+import { feature } from 'topojson';
 
-time = hours + ":" + minutes + ":" + seconds;
+const svg = select('svg');
 
-document.getElementById("time").innerHTML = time;
-setTimeout(pageLoaded, 1000);
-}
+
+
+json('https://observablehq.com/@d3/world-map-svg')
+  .then(data => {
+    console.log(data);
+  });
