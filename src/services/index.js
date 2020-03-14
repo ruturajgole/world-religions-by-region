@@ -1,6 +1,7 @@
-function pageLoaded() {
+async function pageLoaded() {
    updateTime();
-   let [regional, global, national] = getData().map((request) => request.data);
+   responses = await getRequestResponses();
+   data = extractData(responses);
 }
 
 function updateTime() {
@@ -15,18 +16,41 @@ function updateTime() {
 	setTimeout(updateTime, 1000);
 }
 
-function getData() {
-	base = "http://192.168.0.20:9593/world-religions/";
-	requests = [{type: "regional", url: base + "regional.json", data: []},
-               {type: "global", url: base + "global.json", data: []},
-	            {type: "national", url: base + "national.json", data: []}];
-    
-   requests.forEach((request) =>
-      sendRequest(request).then((data) => request.data.push(data)));
-   return requests;
+function extractData(responses) {
+   data = {global: [], regional: [], national: []};
+
+   responses.map((response) => {
+      switch(response.type) {
+         case "global":
+            data.global = response.data;
+         case "regional":
+            data.regional = response.data;
+         case "national":
+            data.national = response.data;
+      }
+   });
+
+   return data;
 }
 
-function sendRequest(request) {
+async function getRequestResponses() {
+	base = "http://192.168.0.20:9593/world-religions/";
+   requests = [{type: "global", url: base + "global.json", data: []},
+               {type: "regional", url: base + "regional.json", data: []},
+               {type: "national", url: base + "national.json", data: []},
+              ];
+   
+   const getData = async item => {
+      return Promise.resolve({ ...item, data: await sendRequest(item)});
+   }
+   
+   responses = await Promise.all(requests.map(item => getData(item)));
+   
+   return new Promise((resolve) =>
+      resolve(responses));
+}
+
+async function sendRequest(request) {
 	let xmlRequestor = checkCompatibleBrowser();
 
    xmlRequestor.open("GET", request.url, true);
@@ -60,6 +84,6 @@ function checkCompatibleBrowser() {
 
 function processRequest(xmlRequestor, resolve) {
    if (xmlRequestor.readyState == XMLHttpRequest.DONE && xmlRequestor.status == 200) {
-      resolve(xmlRequestor.responseText);
+      resolve(JSON.parse(xmlRequestor.responseText));
    }
 }
