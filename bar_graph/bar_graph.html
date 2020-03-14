@@ -1,0 +1,47 @@
+<!-- beautiful -->
+
+<!DOCTYPE HTML>
+<html>
+<head>  
+<script>
+  
+window.onload = function () {
+  
+var chart = new CanvasJS.Chart("chartContainer", {
+  animationEnabled: true,
+  
+  title:{
+    text:"World Religions"
+  },
+  axisX:{
+    interval: 1
+  },
+  axisY2:{
+    interlacedColor: "rgba(1,77,101,.2)",
+    gridColor: "rgba(1,77,101,.1)",
+    title: " Global population"
+  },
+  data: [{
+    type: "bar",
+    name: "companies",
+    axisYType: "secondary",
+    color: "#014D65",
+    dataPoints:
+     [
+    {label:"christianity_protestant", y: 160887585},
+    {label:"christianity_romancatholic", y: 391332035},
+    {label:"christianity_easternorthodox",y: 98501171},
+    {label:"christianity_anglican",y: 36955033},
+    ]
+  }]
+});
+chart.render();
+
+}
+</script>
+</head>
+<body>
+<div id="chartContainer" style="height: 300px; width: 100%;"></div>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+</body>
+</html>
