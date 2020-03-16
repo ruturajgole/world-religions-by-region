@@ -4,11 +4,11 @@
 <script src = "../services/tabs.js"></script>
 <link rel = "stylesheet" href="../../lib/styles/tabs.css">
 </head>
-<body style = "margin:0; height: 100vh; max-height: 100%; width: 100%; flex-flow: column; display: flex;">
+<body onload="document.getElementById('global_button').click()">
   <div class="tab" style = "height: max-content; width: 100%">
-    <button class="tablinks" onclick="openCity(event, 'Global')">Global</button>
-    <button class="tablinks" onclick="openCity(event, 'Regional')">Regional</button>
-    <button class="tablinks" onclick="openCity(event, 'National')">National</button>
+    <button class="tablinks" id="global_button" onclick="openTab(event, 'Global')">Global</button>
+    <button class="tablinks" id="regional_button" onclick="openTab(event, 'Regional')">Regional</button>
+    <button class="tablinks" id="national_button" onclick="openTab(event, 'National')">National</button>
   </div>
   <div style = "height: 100%; padding: 15px; background-color: white;">
     <iframe src = "./tabs/global.html" id = "Global" class = "tabcontent"></iframe>
