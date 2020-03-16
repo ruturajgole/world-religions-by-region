@@ -1,20 +1,20 @@
-<!DOCTYPE HTML>
-<HTML>
-	<HEAD>
-		<TITLE> World Religions By Region </TITLE>
-		<LINK rel = "stylesheet" href="./lib/styles/style.css">
-		<LINK rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-		<LINK rel ="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-		<SCRIPT src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></SCRIPT>
-		<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
-		<SCRIPT src="https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.3.5/bluebird.min.js"></SCRIPT>
-		<SCRIPT src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" ></SCRIPT>
-		<SCRIPT src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"  ></SCRIPT>
-		<script src="./src/services/time.js"></script>
-		<SCRIPT SRC = "./src/services/client.js"></SCRIPT>
-		<script src = "./src/services/index.js"></script>
-	</HEAD>
-<BODY onLoad = "main()">
+
+<html>
+  <head>
+    <title> World Religions </title>
+    <LINK rel = "stylesheet" href="./lib/styles/style.css">
+    <LINK rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <LINK rel ="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <SCRIPT src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></SCRIPT>
+    <SCRIPT src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" ></SCRIPT>
+    <SCRIPT src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"  ></SCRIPT>
+    <!-- for praying hands -->
+    <SCRIPT src='https://kit.fontawesome.com/a076d05399.js'></SCRIPT>
+    <SCRIPT SRC = "index.js"></SCRIPT>
+  </head>
+<body onLoad = "pageLoaded()">
+<!------------NAVIGATION BAR------------------>
+
 <section id ="nav-bar">
 <nav class="navbar navbar-expand-lg navbar-light" id="navcolor">
         <a class="navbar-brand" href="#"><img src = "./lib/logo/logo.png"></a>
@@ -80,14 +80,78 @@
 </section>
 
 <!-- title & time -->
-  <CENTER>
-    <P> WELCOME </P>
-    <P ID = "time"> </P>
-  </CENTER>
+<section class = "text">
+ 
+    <div class = "main_message">
+      <h1><center> WORLD RELIGIONS </center></h1>
+      <h3><center> World, regional, and national populations by religious beliefs </center></h3>
+      <p>
+          The World Religion Project aims to provide detailed information about religious adherence worldwide since 1945. It contains data about the number of adherents by religion in each of the states in the international system for every half-decade period. Some of the religions are divided into religious families, and the breakdown of adherents within a given religion into religious families is provided to the extent data are available.
+
+          The project was developed in three stages. The first stage consisted of the formation of a religions tree. A religion tree is a systematic classification of major religions and of religious families within those major religions. To develop the religion tree we prepared a comprehensive literature review, the aim of which was to define a religion, to find tangible indicators of a given religion of religious families within a major religion, and to identify existing efforts at classifying world religions. The second stage consisted of the identification of major data sources of religious adherence and the collection of data from these sources according to the religion tree classification. This created a dataset that included multiple records for some states for a given point in time, yet contained multiple missing data for specific states, specific time periods, and specific religions. The third stage consisted of cleaning the data, reconciling discrepancies of information from different sources, and imputing data for the missing cases.
+        
+        </p>
+      
+    </div>
+
+    <div class = "grid">
+      
+        <div class = "grid-item-global-based">
+            <h3><span class=" fas fa-praying-hands"> Global-based</span></h3>
+            <p>sdgsdjsjsdhjxnjwxw nmdjksxniwmwx wkwnx sxkwxnwx xjxnwijxskdjisxn juwjxuwkux</p>
+        </div>
+
+        <div class = "grid-item-regional-based">
+            <h3><span class=" fas fa-place-of-worship"> Regional-based</span></h3>
+            <p>sdgsdjsjsdhjxnjwxw nmdjksxniwmwx wkwnx sxkwxnwx xjxnwijxskdjisxn juwjxuwkux</p>
+        </div>
+
+        <div class = "grid-item-national-based">
+            <h3><span class="fas fa-pray"> National -based</span></h3>
+            <p>sdgsdjsjsdhjxnjwxw nmdjksxniwmwx wkwnx sxkwxnwx xjxnwijxskdjisxn juwjxuwkux</p>
+        </div>
+        
+
+    
+    </div>
+
+</section>
+
+
+
 
 <!-- footer -->
-  <div id="footer">
-    <center>This is footer</center>
+  <div class="footer">
+      <div class = "footer-content">
+        <div class = "footer-section-about">
+         
+
+          <p>World Religions is a website for statistics of different religions based on population.</p>
+          <p><i class = " fas fa-envelope"></i> ruturaj@ualberta.ca</p>
+          <p><i class = " fas fa-envelope"></i> dkaur@ualberta.ca</p>
+          <p><i class = " fas fa-envelope"></i> dkaur@ualberta.ca</p>
+
+        </div>
+        
+        <div class = "footer-sections-contact">
+          
+          
+        </div>
+        <div class = "footer-section-links">
+          <a class="nav-link" href="./src/view/home.html"> HOME </a>
+          <a class="nav-link" href="./src/view/information.html">INFORMATION</a>
+          <a class="nav-link" href="./src/view/about.html"> ABOUT US</a>
+          <a class="nav-link" href="./bar_graph/bar_graph.html"> BAR GRAPH</a>
+        </div>
+      </div>  
+
+
+
+    <div class = "footer-bottom">
+      &copy; worldreligions|802 miniproject
+    </div>
+
+
   </div>
 </body>
 </html>
