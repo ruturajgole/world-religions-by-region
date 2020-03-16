@@ -27,11 +27,13 @@ function initializeSelectors(stats) {
         container.appendChild(error);
     }); 
 
-    addCheckbox("world_population",
-        container,
-        (checkbox) => onCheck(checkbox, currentValues, stats),
-        "World Population",
-    );
+    if(!dropDowns.find((value) => value.includes("state"))) { 
+        addCheckbox("world_population",
+            container,
+            (checkbox) => onCheck(checkbox, currentValues, stats),
+            "World Population",
+        );
+    }
 
     religionList = getReligions(stats);
     religions = splitSubtypes(religionList);
@@ -205,7 +207,7 @@ function getValues(currentValues, stats) {
 
     currentValues.checked.forEach((key) => {
         data[key] = stats.map((stat) => ({x: stat.year, y: stat[key]}));
-        data[key].name = capitalize(key.split("_")[0] + " " + key.split("_")[1]);
+        data[key].name = capitalize(key.split("_")[0] + "-" + key.split("_")[1]);
     });
 
     plot(data);
