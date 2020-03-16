@@ -94,9 +94,10 @@ function onCheck(checkbox, currentValues, stats) {
 }
 
 function religionCheck (checkbox, container, stats, currentValues, subtypes) {
+    id = checkbox.value + "_subtypes"
     if (checkbox.checked) {
         const subtypeDiv = document.createElement("div");
-        subtypeDiv.id = checkbox.value;
+        subtypeDiv.id = id;
         container.appendChild(subtypeDiv);
 
         const title = document.createElement("h3");    
@@ -108,7 +109,7 @@ function religionCheck (checkbox, container, stats, currentValues, subtypes) {
                 onCheck(checkbox, currentValues, stats), subtype);
         });
     } else {
-        const subtypeDiv = document.getElementById(checkbox.value);
+        const subtypeDiv = document.getElementById(id);
         container.removeChild(subtypeDiv);
     }
 }
@@ -144,6 +145,7 @@ function addSelect(key, stats, container, currentValues, onChange, name = false)
     });
 
     if (select.id == "from" | select.id == "to") {
+        select.value = select.id == "from" ? Math.min.apply(Math, values) : Math.max.apply(Math, values);
         currentValues[select.id] = select.value;
     } else {
         currentValues.selected[select.id] = select.value;
@@ -191,6 +193,7 @@ function getValues(currentValues, stats) {
 
     currentValues.checked.forEach((key) => {
         data[key] = stats.map((stat) => ({x: stat.year, y: stat[key]}));
+        data[key].name = capitalize(key.split("_")[0] + " " + key.split("_")[1]);
     });
 
     plot(data);

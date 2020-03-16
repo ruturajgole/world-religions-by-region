@@ -1,9 +1,9 @@
 function plot(data){
     const chart = new CanvasJS.Chart("chartContainer", {
-        theme: "dark1", // "light2", "dark1", "dark2"
-        animationEnabled: false, // change to true		
+        theme: "light2", // "light2", "dark1", "dark2"
+        animationEnabled: true, // change to true		
         title:{
-            text: "Basic Column Chart",
+            text: "Statistical Data",
         },
         legend: {
             cursor: "pointer",
@@ -11,13 +11,18 @@ function plot(data){
             horizontalAlign: "center",
             dockInsidePlotArea: true,
         },
+        axisY: {
+            title: "Population",
+        },
         axisX:{
+            title: "Year",
             valueFormatString: "#"
           },
         data: Object.keys(data).map((attribute) => ({
                 type: "line",
                 showInLegend: true,
-                dataPoints: data[attribute].map(({x, y}) => ({x, y})),
+                name: data[attribute].name,
+                dataPoints: data[attribute].map(({x, y}) => ({label: x, y})),
             })
         ),
     });
