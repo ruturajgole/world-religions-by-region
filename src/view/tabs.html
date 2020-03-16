@@ -4,16 +4,16 @@
 <script src = "../services/tabs.js"></script>
 <link rel = "stylesheet" href="../../lib/styles/tabs.css">
 </head>
-<body style="margin: 0; display: flex; flex-flow: column; height: 100%;">
-  <div class="tab">
+<body style = "margin:0; height: 100vh; max-height: 100%; width: 100%; flex-flow: column; display: flex;">
+  <div class="tab" style = "height: max-content; width: 100%">
     <button class="tablinks" onclick="openCity(event, 'Global')">Global</button>
     <button class="tablinks" onclick="openCity(event, 'Regional')">Regional</button>
     <button class="tablinks" onclick="openCity(event, 'National')">National</button>
   </div>
-  <div style = "flex: 1; height: 100%; display: flex;">
-    <iframe src = "./tabs/global.html" id = "Global" class = "tabcontent"></iframe>
-    <iframe src = "./tabs/regional.html" id = "Regional" style = "height: 100%; width: 100%" class = "tabcontent"></iframe>
-    <iframe src = "./tabs/national.html" id = "National" style = "width: 100%" class = "tabcontent"></iframe>
+  <div style = "height: 100%">
+    <iframe src = "./tabs/global.html" id = "Global" class = "tabcontent" style = "width: 100%; height: 100%;"></iframe>
+    <iframe src = "./tabs/regional.html" id = "Regional" class = "tabcontent" style = "width: 100%; height: 100%;" scrolling = "no"></iframe>
+    <iframe src = "./tabs/national.html" id = "National" class = "tabcontent"style = "width: 100%; height: 100%;" scrolling = "no"></iframe>
   </div>
 </body>
 </html> 
