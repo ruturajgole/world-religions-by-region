@@ -5,8 +5,7 @@ function initializeSelectors(stats) {
     const dropDowns = Object.keys(stats[0]).filter((key) =>
         key.includes("year") |
         key.includes("state") |
-        key.includes("region") |
-        key.startsWith("code")
+        key.includes("region")
     );
 
     dropDowns.forEach((key) => {
@@ -19,6 +18,7 @@ function initializeSelectors(stats) {
             addSelect(key, stats, container, currentValues, (select) =>
                 selectOption(select, currentValues, stats))
         }
+
         const br = document.createElement("br");
         const error = document.createElement("p");
         error.id = "error";
@@ -52,10 +52,11 @@ function getReligions(stats) {
         !key.includes("population") &
         !key.includes("region") &
         !key.includes("state") &
-        !key.includes("code")
+        !key.includes("code") &
+        !key.includes("religion")
     );
     
-    return religionList;
+    return religionList.sort();
 }
 
 function splitSubtypes(religionList) {
@@ -81,7 +82,7 @@ function selectOption(select, currentValues, stats) {
     } else {
         currentValues.selected[select.id] = select.value;
     }
-    getValues(currentValues, stats);
+    getValues(currentValues, stats);    
 }
 
 function onCheck(checkbox, currentValues, stats) {
@@ -94,7 +95,7 @@ function onCheck(checkbox, currentValues, stats) {
 }
 
 function religionCheck (checkbox, container, stats, currentValues, subtypes) {
-    id = checkbox.value + "_subtypes"
+    id = checkbox.value + "_subtypes";
     if (checkbox.checked) {
         const subtypeDiv = document.createElement("div");
         subtypeDiv.id = id;
@@ -110,6 +111,11 @@ function religionCheck (checkbox, container, stats, currentValues, subtypes) {
         });
     } else {
         const subtypeDiv = document.getElementById(id);
+        checkboxes = Array.from(subtypeDiv.getElementsByTagName("input"));
+        checkboxes.forEach((checkbox) => {
+            checkbox.checked = false;
+            checkbox.dispatchEvent(new Event("change"));
+        });
         container.removeChild(subtypeDiv);
     }
 }
@@ -121,6 +127,7 @@ function capitalize(string) {
 function addSelect(key, stats, container, currentValues, onChange, name = false) {
     const values = Array.from(new Set(stats.map((stat) => stat[key])));
     const select = document.createElement("select");
+    values.sort();
 
     if (name) {
         select.id = name == "From" ? "from" : "to"; 
@@ -167,6 +174,11 @@ function addCheckbox(value, container, onChange, name = false) {
     container.appendChild(label);
 
     checkbox.onchange = ({target}) => onChange(target);
+
+    if (name == "all"){
+        checkbox.checked = true;
+        checkbox.dispatchEvent(new Event("change"));
+    }
 }
 
 function getValues(currentValues, stats) {

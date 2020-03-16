@@ -19,7 +19,7 @@ function plot(data){
             valueFormatString: "#"
           },
         data: Object.keys(data).map((attribute) => ({
-                type: "line",
+                type: "column",
                 showInLegend: true,
                 name: data[attribute].name,
                 dataPoints: data[attribute].map(({x, y}) => ({label: x, y})),
