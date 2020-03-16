@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src = "../services/tabs.js"></script>
+<link rel = "stylesheet" href="../../lib/styles/tabs.css">
+</head>
+<body style = "margin: 0;">
+
+<div class="tab">
+  <button class="tablinks" onclick="openCity(event, 'Global')">Global</button>
+  <button class="tablinks" onclick="openCity(event, 'Regional')">Regional</button>
+  <button class="tablinks" onclick="openCity(event, 'National')">National</button>
+</div>
+
+<iframe
+  src = "./tabs/global.html"
+  id = "Global"
+  class = "tabcontent"
+  frameborder = "0"
+  height = `${window.innerheight}`
+  width = "100%"
+  allowfullscreen>
+</iframe>
+<iframe src = "./tabs/regional.html" id = "Regional" class = "tabcontent" height = "100%" width = "100%"></iframe>
+<iframe src = "./tabs/national.html" id = "National" class = "tabcontent" height = "100%" width = "100%"></iframe>
+
+</body>
+</html> 
