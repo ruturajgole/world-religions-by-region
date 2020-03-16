@@ -2,9 +2,6 @@ function plot(data){
     const chart = new CanvasJS.Chart("chartContainer", {
         theme: "light2", // "light2", "dark1", "dark2"
         animationEnabled: true, // change to true		
-        title:{
-            text: "Statistical Data",
-        },
         legend: {
             cursor: "pointer",
             verticalAlign: "top",
@@ -26,6 +23,11 @@ function plot(data){
             })
         ),
     });
+
+    if (Object.keys(data).length <= 1) {
+        chart.options.data[0].color = "blue";
+    }
+
     chart.render();
 }
 
