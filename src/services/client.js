@@ -4,7 +4,7 @@ async function requestData(request) {
 }
 
 async function getRequestResponse(request) {
-	base = "http://192.168.0.20:9593/world-religions/";
+	base = "http://localhost:9593/world-religions/";
    requests = [{type: "global", url: base + "global.json", data: []},
                {type: "regional", url: base + "regional.json", data: []},
                {type: "national", url: base + "national.json", data: []},
